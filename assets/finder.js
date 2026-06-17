@@ -31,20 +31,21 @@ function initFinder() {
   if (pre && TAXONOMY.condition.options[pre]) active.condition.add(pre);
 
   // Build the filter UI as collapsible accordions so every category heading is
-  // visible at a glance. The hero facet starts open; any facet with an active
-  // selection (e.g. preselected via ?condition=) also starts open.
-  const badges = {};
-  Object.entries(TAXONOMY).forEach(([facet, def], i) => {
+  // visible at a glance. Only one section is open at a time (native exclusive
+  // accordion via the shared `name`). Open the first facet that has a selection
+  // (e.g. preselected via ?condition=), otherwise the hero facet.
+  const facetKeys = Object.keys(TAXONOMY);
+  const openFacet = facetKeys.find((f) => active[f].size > 0) || facetKeys[0];
+  Object.entries(TAXONOMY).forEach(([facet, def]) => {
     const group = document.createElement("details");
     group.className = "filter-group";
-    group.open = i === 0 || active[facet].size > 0;
+    group.name = "physiolab-filters";
+    group.open = facet === openFacet;
     const summary = document.createElement("summary");
     summary.innerHTML =
       `<span class="fg-label">${def.label}</span>` +
-      `<span class="fg-badge" hidden></span>` +
       `<span class="fg-chevron" aria-hidden="true">⌄</span>`;
     group.appendChild(summary);
-    badges[facet] = summary.querySelector(".fg-badge");
     const chips = document.createElement("div");
     chips.className = "chips";
     Object.entries(def.options).forEach(([key, label]) => {
@@ -138,14 +139,6 @@ function initFinder() {
   }
 
   function render() {
-    // Reflect active selection counts on each (possibly collapsed) filter group.
-    Object.keys(TAXONOMY).forEach((f) => {
-      const b = badges[f];
-      if (!b) return;
-      const n = active[f].size;
-      b.textContent = n;
-      b.hidden = n === 0;
-    });
     const list = PRACTITIONERS.filter(matches);
     countEl.textContent =
       list.length + (list.length === 1 ? " practitioner" : " practitioners");
