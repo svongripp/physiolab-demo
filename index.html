@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Find your physiotherapist — Physiolab (concept demo)</title>
+<meta name="description" content="Find the right Physiolab practitioner by what's bothering you, location, language and funding — then book directly. A concept demo.">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<details class="explainer">
+  <summary>
+    <span><strong>Concept demo for Kenneth</strong> — a "find your physio" front door + SEO pages</span>
+    <span class="hint">Read the idea ▾</span>
+  </summary>
+  <div class="explainer-body">
+    <p><strong>The problem today.</strong> Each Physiolab location runs a separate Jane account,
+       so a new patient has to pick a <em>clinic</em> before they know who works there or whether
+       anyone there treats their problem — then they're dropped into a generic booking list.
+       Nearly every physio clinic in the city has this exact same front door.</p>
+    <p><strong>The idea.</strong> Let people start from their <em>need</em> — "I want help
+       with…" — and filter by location, language and funding, then deep-link straight onto the
+       right practitioner's Jane page. (The "Book with…" buttons below are <em>live</em> deep
+       links into your real Olympic Village booking — try Kenneth's.)</p>
+    <p><strong>Why it's a competitive advantage:</strong></p>
+    <ul>
+      <li><strong>Differentiation</strong> — you'd own <em>"find the right physio for me,"</em>
+          not "find a clinic near me." I haven't found a local competitor doing need-first discovery.</li>
+      <li><strong>Better first visits &amp; retention</strong> — patients land with someone who
+          actually treats their issue (vestibular → Judy, pelvic → Mecca, running → Kelly).</li>
+      <li><strong>Fewer mis-bookings &amp; admin</strong> — the funding filter stops someone
+          booking an ICBC visit with a private-pay-only clinician.</li>
+      <li><strong>SEO you're currently missing</strong> — condition/service pages (ICBC, pinched
+          nerve, IMS, decompression) catch high-intent Google searches and funnel into the finder.</li>
+      <li><strong>Cheap to adopt</strong> — it's a thin layer over your existing Jane accounts;
+          the deep links already work, so your web provider can rebuild this inside the real site.</li>
+    </ul>
+    <p class="explainer-foot">Not a live page — a working prototype to react to. See
+       <a href="README.md">the notes</a> for honest caveats (tags are drafts; only Olympic
+       Village is populated).</p>
+  </div>
+</details>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="logo">Physio<span>lab</span></span>
+    <span class="tag">Vancouver · 4 locations</span>
+  </a>
+  <nav class="nav">
+    <a href="icbc-physiotherapy-vancouver.html">ICBC</a>
+    <a href="pinched-nerve-neck-pain-vancouver.html">Neck &amp; nerve pain</a>
+    <a href="ims-dry-needling-vancouver.html">IMS</a>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">◐</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Find the right physiotherapist — not just the nearest clinic.</h1>
+  <p>Tell us what's bothering you. We'll show you the practitioners across our four
+     Vancouver locations who treat it, in the language you prefer, with the funding you have —
+     then book you straight in.</p>
+</section>
+
+<main class="finder">
+  <div class="finder-grid">
+    <aside class="filters" id="filters" aria-label="Filter practitioners"></aside>
+    <div>
+      <div class="results-head">
+        <h2 style="margin:0;font-size:18px;">Matching practitioners</h2>
+        <span class="count" id="resultCount"></span>
+      </div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <span>Physiolab — concept demo. Practitioner data read from public listings, June 2026; for review only.</span>
+    <span><a href="README.md">About this demo</a></span>
+  </div>
+</footer>
+
+<script src="assets/physios.js"></script>
+<script src="assets/finder.js"></script>
+</body>
+</html>
